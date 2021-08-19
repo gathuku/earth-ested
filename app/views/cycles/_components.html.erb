@@ -1,0 +1,12 @@
+<div class="component-fields">
+  <%= form.text_field :name %>
+
+  <div class="">
+    <template data-cycle-target="impacts">
+      <%= fields_for :impacts, Impact.new, child_index: "TEMPLATE_RECORD" do |impact| %>
+        <%= render "impacts", form:  impact %>
+      <% end %>
+    </template>
+    <span>Add impact</span>
+  </div>
+</div>
