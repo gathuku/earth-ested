@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_08_19_052107) do
 
   create_table "cycles", force: :cascade do |t|
     t.string "name"
-    t.jsonb "components"
+    t.jsonb "components", default: []
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
