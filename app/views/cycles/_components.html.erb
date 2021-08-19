@@ -1,12 +1,13 @@
 <div class="component-fields">
-  <%= form.text_field :name %>
+  <%= form.label :name, "component name" %>
+  <%= form.text_field :name, class: 'block rounded-md w-1/2' %>
 
-  <div class="">
-    <template data-cycle-target="impacts">
+  <div data-cycle-target="impacts" class="">
+    <template data-cycle-target="impactsTemplate">
       <%= fields_for :impacts, Impact.new, child_index: "TEMPLATE_RECORD" do |impact| %>
         <%= render "impacts", form:  impact %>
       <% end %>
     </template>
-    <span>Add impact</span>
+    <span data-action="click->cycle#addImpact" class="text-indigo-500 cursor-pointer mt-3">Add impact</span>
   </div>
 </div>

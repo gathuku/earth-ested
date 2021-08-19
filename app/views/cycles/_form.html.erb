@@ -16,17 +16,17 @@
 
     <div class="block mt-4">
     <%= form.label :name , class:'text-gray-700'  %>
-    <%= form.text_field :name, class: 'block rounded-md w-full' %>
+    <%= form.text_field :name, class: 'block rounded-md w-1/2' %>
   </div>
 
-    <div class="block mt-4" data-controller="cycle">
+    <div class="block mt-4 ml-4" data-controller="cycle">
       <div data-cycle-target="components">
       <template data-cycle-target="componentsTemplate">
-        <%= fields_for :components, Component.new, child_index: "TEMPLATE_RECORD" do |component| %>
+        <%= form.fields_for :components, Component.new, index: "TEMPLATE_RECORD" do |component| %>
           <%= render "components",  form: component %>
         <% end %>
       </template>
-      <span data-action="click->cycle#addComponent">Add component</span>
+      <span data-action="click->cycle#addComponent" class="text-indigo-500 cursor-pointer mt-3">Add component</span>
       <div>
     </div>
 
