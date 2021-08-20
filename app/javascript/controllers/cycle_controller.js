@@ -10,9 +10,13 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["components", "componentsTemplate", "impacts", "impactsTemplate" ]
+  static targets = ["components", "componentsTemplate", "impacts", "impactsTemplate", "subComponentTemplate" ]
 
   connect() {
+  }
+
+  addSubComponent(){
+    this.addAssociation(this.subComponentTemplateTarget, this.componentsTarget, "subComponent" )
   }
 
   addComponent(){

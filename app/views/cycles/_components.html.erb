@@ -1,5 +1,8 @@
 <div class="component-fields">
+  <div class="flex">
   <%= form.label :name, "Component name" %>
+  <span class="text-sm text-red-600 ml-1">remove</span>
+  </div>
   <%= form.text_field :name, class: 'block rounded-md w-1/2' %>
 
   <div data-cycle-target="impacts" class="impacts ml-3">
@@ -9,6 +12,16 @@
       <%# end %>
       <%= render "impacts" %>
     </template>
-    <span data-action="click->cycle#addImpact" class="text-indigo-500 cursor-pointer mt-3">Add impact</span>
+    <span data-action="click->cycle#addImpact" class="text-indigo-500 cursor-pointer mt-3 text-xs">Add impact</span>
   </div>
+
+  <div class="subComponent ml-3">
+    <template  data-cycle-target="subComponentTemplate">
+      <%= form.fields_for "components[]", Component.new do |component| %>
+        <%= render "sub_components",  form: component %>
+      <% end %>
+    </template>
+    <span data-action="click->cycle#addSubComponent" class="text-indigo-500 cursor-pointer mt-3 text-xs">Add sub component</span>
+  </div>
+
 </div>

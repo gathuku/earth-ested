@@ -1,0 +1,14 @@
+<div class="component-fields">
+  <%# form.label :name, "Subcomponent name" %>
+  <%# form.text_field :name, class: 'block rounded-md w-1/2' %>
+  <%= label_tag "cycle[components][][components][][name]", "Subcomponent name" %>
+  <%= text_field_tag "cycle[components][][components][][name]",{}, class: 'w-1/2' %>
+
+  <div data-cycle-target="impacts" class="impacts ml-3">
+    <template data-cycle-target="impactsTemplate">
+      <%= render "sub_impacts" %>
+    </template>
+    <span data-action="click->cycle#addImpact" class="text-indigo-500 cursor-pointer mt-3">Add impact</span>
+  </div>
+
+</div>
