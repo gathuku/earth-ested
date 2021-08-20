@@ -22,9 +22,9 @@
     <div class="block mt-4 ml-4" data-controller="cycle">
       <div data-cycle-target="components">
       <template data-cycle-target="componentsTemplate">
-        <%# form.object.components.each do |component|%>
-        <%= form.fields_for :components, Component.new, index: "TEMPLATE_RECORD" do |sub_component| %>
-          <%= render "components",  form: sub_component %>
+        <%# form.object.components.each do |comp|%>
+        <%= form.fields_for "components[]", Component.new do |component| %>
+          <%= render "components",  form: component %>
         <% end %>
         <%# end %>
       </template>

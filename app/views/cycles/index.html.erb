@@ -18,11 +18,11 @@
     <table class="min-w-full divide-y divide-gray-200">
       <thead class="bg-gray-50">
         <tr>
-        
+
             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-        
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Components</th>
-                
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Impact</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Components</th>
+
 
         </tr>
       </thead>
@@ -30,13 +30,9 @@
       <tbody class="bg-white divide-y divide-gray-200">
         <% @cycles.each do |cycle| %>
           <%= content_tag :tr, id: dom_id(cycle), class: dom_class(cycle) do %>
-            
               <td class="text-indigo-600 hover:text-indigo-900 px-6 py-4"><%= link_to cycle.name, cycle %></td>
-            
-
-                          <td class="px-6 py-4 whitespace-nowrap"><%= cycle.components %></td>
-            
-            
+              <td class="text-indigo-600 hover:text-indigo-900 px-6 py-4"><%= cycle.total_impact %></td>
+              <td class="text-indigo-600 hover:text-indigo-900 px-6 py-4"><%= link_to "View Raw Json", cycle_path(cycle), format: :json %></td>
           <% end %>
         <% end %>
       </tbody>

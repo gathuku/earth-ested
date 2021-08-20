@@ -12,6 +12,7 @@ class CyclesController < ApplicationController
   # GET /cycles/new
   def new
     @cycle = Cycle.new
+    @cycle.components.push(Component.new)
   end
 
   # GET /cycles/1/edit
@@ -66,6 +67,9 @@ class CyclesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def cycle_params
     # params.require(:cycle).permit(:name, components: [:name, { impacts: %i[climate_change water_use] }])
-    params.require(:cycle).permit(:name, components: {})
+    params.require(:cycle).permit(:name,
+                                  components: [:name,
+                                               { impacts: %i[climate_change water_use],
+                                                 components: [:name, { impacts: %i[climate_change water_use] }] }])
   end
 end
