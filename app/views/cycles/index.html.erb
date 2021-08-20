@@ -32,7 +32,7 @@
           <%= content_tag :tr, id: dom_id(cycle), class: dom_class(cycle) do %>
               <td class="text-indigo-600 hover:text-indigo-900 px-6 py-4"><%= link_to cycle.name, cycle %></td>
               <td class="text-indigo-600 hover:text-indigo-900 px-6 py-4"><%= cycle.total_impact %></td>
-              <td class="text-indigo-600 hover:text-indigo-900 px-6 py-4"><%= link_to "View Raw Json", cycle_path(cycle), format: :json %></td>
+              <td class="text-indigo-600 hover:text-indigo-900 px-6 py-4"><%= link_to "View Raw Json", cycle_path(cycle, format: :json) %></td>
           <% end %>
         <% end %>
       </tbody>
