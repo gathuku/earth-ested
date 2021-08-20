@@ -1,0 +1,27 @@
+require:
+  - rubocop-rails
+AllCops:
+  TargetRubyVersion: 2.7
+  Exclude:
+    - "Gemfile"
+    - "Guardfile"
+    - "**/*.erb"
+    - "node_modules/**/*"
+    - "db/**/*"
+    - "bin/*"
+  NewCops: enable
+Style/Documentation:
+  Enabled: false
+Style/StringLiterals:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+# Metrics/LineLength:
+#   Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - "test/factories/*"
