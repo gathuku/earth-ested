@@ -45,4 +45,9 @@ export default class extends Controller {
     template.insertAdjacentHTML("beforebegin", content);
   }
 
+  removeComponent(event){
+    event.preventDefault()
+    event.target.closest(".component-fields").style.display = "none"
+  }
+
 }
