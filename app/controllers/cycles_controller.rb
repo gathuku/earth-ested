@@ -12,7 +12,6 @@ class CyclesController < ApplicationController
   # GET /cycles/new
   def new
     @cycle = Cycle.new
-    @cycle.components.push(Component.new)
   end
 
   # GET /cycles/1/edit
@@ -22,11 +21,9 @@ class CyclesController < ApplicationController
   def create
     @cycle = Cycle.new(cycle_params)
 
-    byebug
-
     respond_to do |format|
       if @cycle.save
-        format.html { redirect_to @cycle, notice: 'Cycle was successfully created.' }
+        format.html { redirect_to cycles_path, notice: 'Cycle was successfully created.' }
         format.json { render :show, status: :created, location: @cycle }
       else
         format.html { render :new, status: :unprocessable_entity }

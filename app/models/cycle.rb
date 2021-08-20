@@ -9,6 +9,7 @@ class Cycle < ApplicationRecord
 
   # Accessors
   # Validations
+  validates :name, presence: true
   # Class methods / Singleton Methods
   # Instance methods
   def total_impact
