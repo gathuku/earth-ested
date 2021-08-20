@@ -7,34 +7,51 @@
 //   <h1 data-target="hello.output"></h1>
 // </div>
 
-import { Controller } from "stimulus"
+import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["components", "componentsTemplate", "impacts", "impactsTemplate", "subComponentTemplate" ]
+  static targets = [
+    "components",
+    "componentsTemplate",
+    "impacts",
+    "impactsTemplate",
+    "subComponentTemplate",
+  ];
 
-  connect() {
+  connect() {}
+
+  addSubComponent() {
+    this.addAssociation(
+      this.subComponentTemplateTarget,
+      this.componentsTarget,
+      "subComponent"
+    );
   }
 
-  addSubComponent(){
-    this.addAssociation(this.subComponentTemplateTarget, this.componentsTarget, "subComponent" )
+  addComponent() {
+    this.addAssociation(
+      this.componentsTemplateTarget,
+      this.componentsTarget,
+      "component-fields"
+    );
   }
 
-  addComponent(){
-    this.addAssociation(this.componentsTemplateTarget, this.componentsTarget, "component-fields" )
-  }
-
-  addImpact(event){
-    event.preventDefault()
+  addImpact(event) {
+    event.preventDefault();
     // Prevent adding another impact if exists
-    var impacts = event.target.closest(".impacts").querySelectorAll(".impacts-fields")
-    if(impacts.length > 0){
-      event.target.textContent = "Cannot add more than one impact"
+    var impacts = event.target
+      .closest(".impacts")
+      .querySelectorAll(".impacts-fields");
+    if (impacts.length > 0) {
+      event.target.textContent = "Cannot add more than one impact";
       return;
     }
 
-    var impactTemplate = event.target.closest(".component-fields").querySelector("template")
+    var impactTemplate = event.target
+      .closest(".component-fields")
+      .querySelector("template");
 
-    this.addAssociation(impactTemplate, this.impactsTarget, "impact-fields" )
+    this.addAssociation(impactTemplate, this.impactsTarget, "impact-fields");
   }
 
   addAssociation(template, items, selectorClass) {
@@ -45,9 +62,8 @@ export default class extends Controller {
     template.insertAdjacentHTML("beforebegin", content);
   }
 
-  removeComponent(event){
-    event.preventDefault()
-    event.target.closest(".component-fields").style.display = "none"
+  removeComponent(event) {
+    event.preventDefault();
+    event.target.closest(".component-fields").style.display = "none";
   }
-
 }
