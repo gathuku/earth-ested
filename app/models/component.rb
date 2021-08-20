@@ -3,7 +3,7 @@ class Component
   include ActiveModel::Model
 
   # Accessors
-  attr_accessor :name, :impacts
+  attr_accessor :id, :name, :impacts
 
   # Assocication
 end

@@ -13,15 +13,24 @@ export default class extends Controller {
   static targets = ["components", "componentsTemplate", "impacts", "impactsTemplate" ]
 
   connect() {
-    console.log('connected')
   }
 
   addComponent(){
     this.addAssociation(this.componentsTemplateTarget, this.componentsTarget, "component-fields" )
   }
 
-  addImpact(){
-    this.addAssociation(this.impactsTemplateTarget, this.impactsTarget, "impact-fields" )
+  addImpact(event){
+    event.preventDefault()
+    // Prevent adding another impact if exists
+    var impacts = event.target.closest(".impacts").querySelectorAll(".impacts-fields")
+    if(impacts.length > 0){
+      event.target.textContent = "Cannot add more than one impact"
+      return;
+    }
+
+    var impactTemplate = event.target.closest(".component-fields").querySelector("template")
+
+    this.addAssociation(impactTemplate, this.impactsTarget, "impact-fields" )
   }
 
   addAssociation(template, items, selectorClass) {
@@ -29,8 +38,6 @@ export default class extends Controller {
       /TEMPLATE_RECORD/g,
       items.querySelectorAll(`.${selectorClass}`).length
     );
-    console.log(items.querySelectorAll(`.${selectorClass}`).length)
-    console.log(content)
     template.insertAdjacentHTML("beforebegin", content);
   }
 

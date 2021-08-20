@@ -1,5 +1,5 @@
 class Impact
   include ActiveModel::Model
 
-  attr_accessor :climate_change, :water_use
+  attr_accessor :id, :climate_change, :water_use
 end
